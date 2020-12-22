@@ -9,6 +9,7 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
+<<<<<<< HEAD
     """ex"""
             obj_dict = {}
         if cls is None:
@@ -17,6 +18,17 @@ class FileStorage:
             if cls.__name__ == val.__class__.__name__:
                 obj_dict[key] = val
         return obj_dict
+=======
+        """Returns a dictionary of models currently in storage"""
+        if cls is None:
+            return FileStorage.__objects
+        else:
+            new = {}
+            for key, val in FileStorage.__objects.items():
+                if val.__class__ == cls:
+                    new[key] = val
+            return new
+>>>>>>> 0eec30f295fd9c634c5641354cf3b1f7e242cf75
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
@@ -42,15 +54,23 @@ class FileStorage:
         from models.review import Review
 
         classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+        }
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
+    def delete(self, obj=None):
+        """ Task 5 """
+        if obj is not None:
+            tag = obj.__class__.__name__ + "." + obj.id
+            if tag in FileStorage.__objects:
+                del FileStorage.__objects[tag]
+                self.save()
