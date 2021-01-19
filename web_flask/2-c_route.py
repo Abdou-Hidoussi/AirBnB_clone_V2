@@ -17,5 +17,11 @@ def hbnbdict():
     """ Task 1 """
     return "HBNB"
 
+
+@app.route("/c/<text>")
+def cdir(text):
+    """ Task 2 """
+    return ("C {}".format(text.replace('_', ' ')))
+
 if __name__ == '__main__':
     app.run()
