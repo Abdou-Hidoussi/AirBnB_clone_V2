@@ -30,5 +30,14 @@ def pydir(text="is cool"):
     """ Task 3 """
     return ("Python {}".format(text.replace('_', ' ')))
 
+
+@app.route("/number/<n>")
+def number(n):
+    """ Task 4 """
+    if type(int(n)) is int:
+        return ("{} is a number".format(n))
+    else:
+        abort(404)
+
 if __name__ == '__main__':
     app.run()
