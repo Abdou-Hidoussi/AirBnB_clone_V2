@@ -50,9 +50,9 @@ def evoddict(n):
     """ Task 6 """
     if isinstance(n, int):
         if (n / 2) is 0:
-            word = "even"
-        else:
             word = "odd"
+        else:
+            word = "even"
         return render_template('6-number_odd_or_even.html', nb=n, word=word)
 
 if __name__ == '__main__':
