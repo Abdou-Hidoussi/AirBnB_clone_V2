@@ -31,14 +31,11 @@ def pydict(text="is cool"):
     return ("Python {}".format(text.replace('_', ' ')))
 
 
-@app.route("/number/<n>")
+@app.route("/number/<int:n>")
 def numberdict(n):
     """ Task 4 """
-    try:
-        nb = int(n)
-        return ("{} is a number".format(nb))
-    except Exception:
-        abort(404)
+    if isinstance(n, int):
+        return ("{} is a number".format(n))
 
 if __name__ == '__main__':
     app.run()
