@@ -19,24 +19,25 @@ def hbnbdict():
 
 
 @app.route("/c/<text>")
-def cdir(text):
+def cdict(text):
     """ Task 2 """
     return ("C {}".format(text.replace('_', ' ')))
 
 
 @app.route("/python/<text>")
 @app.route("/python/")
-def pydir(text="is cool"):
+def pydict(text="is cool"):
     """ Task 3 """
     return ("Python {}".format(text.replace('_', ' ')))
 
 
 @app.route("/number/<n>")
-def number(n):
+def numberdict(n):
     """ Task 4 """
-    if type(int(n)) is int:
-        return ("{} is a number".format(n))
-    else:
+    try:
+        nb = int(n)
+        return ("{} is a number".format(nb))
+    except Exception:
         abort(404)
 
 if __name__ == '__main__':
