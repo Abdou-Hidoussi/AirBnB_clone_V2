@@ -29,6 +29,6 @@ def cdir(text):
 def pydir(text="is cool"):
     """ Task 3 """
     return ("Python {}".format(text.replace('_', ' ')))
-    
+
 if __name__ == '__main__':
     app.run()
