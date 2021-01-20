@@ -13,7 +13,7 @@ def exeption(e):
     storage.close()
 
 
-@app.route('/cities_by_states', strict_slashes=False)
+@app.route('/cities_by_states')
 def statesList():
     """ Task 9 """
     state = storage.all("State")
