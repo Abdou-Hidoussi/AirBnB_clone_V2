@@ -15,16 +15,12 @@ def exeption(e):
 
 @app.route('/states')
 @app.route('/states/<id>')
-def StatesAndcitiesByState(id=None):
+def SABC(id=None):
     """ Task 10 """
-    state = storage.all("State")
-    if id is None:
-        return render_template('9-states.html', state=state)
-    else:
-        for x in state.values():
-            if x.id == id:
-                return render_template("9-states.html", state=x)
-    return render_template("9-states.html")
+    state = storage.all(State)
+    if id is not None:
+        id = 'State.' + id
+    return render_template('9-states.html', state=state, id=id)
 
 if __name__ == "__main__":
     app.run()
