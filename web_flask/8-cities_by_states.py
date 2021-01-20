@@ -15,9 +15,9 @@ def exeption(e):
 
 @app.route('/states_list')
 def statesList():
-    """ Task 8 """
+    """ Task 9 """
     state = storage.all("State")
-    return render_template('7-states_list.html', state=state)
+    return render_template('8-cities_by_states.html', state=state)
 
 
 if __name__ == "__main__":
