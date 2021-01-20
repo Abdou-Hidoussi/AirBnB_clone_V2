@@ -24,7 +24,7 @@ def StatesAndcitiesByState(id=None):
         for x in state.values():
             if x.id == id:
                 return render_template("9-states.html", state=x)
-        return render_template("9-states.html")
+    return render_template("9-states.html")
 
 if __name__ == "__main__":
     app.run()
