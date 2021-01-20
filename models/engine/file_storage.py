@@ -67,5 +67,3 @@ class FileStorage:
     def close(self):
         """ Task 7 """
         self.reload()
-
-from models import storage
