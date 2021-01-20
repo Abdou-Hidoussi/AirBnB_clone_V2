@@ -9,7 +9,9 @@ storage_type = getenv("HBNB_TYPE_STORAGE")
 
 
 class Amenity(BaseModel, Base):
-    """ Task 10 """
+    '''
+        Implementation for the Amenities.
+    '''
     __tablename__ = 'amenities'
     if storage_type == 'db':
         from models.place import place_amenity

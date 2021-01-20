@@ -1,16 +1,19 @@
 #!/usr/bin/python3
 """This module defines a class User"""
 from models.base_model import BaseModel, Base
+from models.place import Place
+from models.review import Review
 from sqlalchemy import Column, String
-from os import getenv
 from sqlalchemy.orm import relationship
-
+from os import getenv
 
 storage_type = getenv("HBNB_TYPE_STORAGE")
 
 
 class User(BaseModel, Base):
-    """ Task 7 """
+    '''
+        Definition of the User class
+    '''
     __tablename__ = 'users'
     if storage_type == 'db':
         email = Column(String(128), nullable=False)

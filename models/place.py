@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" Review module for the HBNB  """
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Float, Table
 from sqlalchemy.orm import relationship
@@ -19,7 +20,9 @@ if storage_type == 'db':
 
 
 class Place(BaseModel, Base):
-    """ Task 8 """
+    """
+        Define the class Place that inherits from BaseModel.
+    """
     __tablename__ = 'places'
     if storage_type == 'db':
         city_id = Column(String(60), ForeignKey("cities.id"), nullable=False)
@@ -56,7 +59,10 @@ class Place(BaseModel, Base):
     if storage_type != 'db':
         @property
         def reviews(self):
-            """ """
+            """
+            get list of Review instances with
+            place_id equals to the current Place.id
+            """
             list_reviews = []
             all_reviews = self.reviews
             for review in all_reviews:
@@ -66,7 +72,10 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            """ Task 8 """
+            """
+            returns the list of Amenity instances based on the attribute
+            amenity_ids that contains all Amenity.id linked to the Place
+            """
             amenity_objs = []
             for amenity_id in self.amenity_ids:
                 key = 'Amenity.' + amenity_id
@@ -76,6 +85,9 @@ class Place(BaseModel, Base):
 
         @amenities.setter
         def amenities(self, obj):
-            """ Task 8 """
+            """
+            adds an Amenity.id to the attribute amenity_ids if obj is
+            an instance of Amenity
+            """
             if isinstance(obj, Amenity):
                 self.amenity_ids.append(obj.id)

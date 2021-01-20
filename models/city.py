@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" City Module for HBNB project """
+'''
+    Define the class City.
+'''
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
@@ -10,7 +12,9 @@ storage_type = getenv("HBNB_TYPE_STORAGE")
 
 
 class City(BaseModel, Base):
-    """ Task 9 """
+    '''
+        Define the class City that inherits from BaseModel.
+    '''
     __tablename__ = 'cities'
     if storage_type == 'db':
         name = Column(String(128), nullable=False)
